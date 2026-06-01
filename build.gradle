@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation 'com.h2database:h2:2.2.224'
+    implementation 'org.flywaydb:flyway-core:9.22.3'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
@@ -19,23 +20,16 @@ test {
     useJUnitPlatform()
 }
 
-task runInit(type: JavaExec) {
-    group = 'Execution'
-    description = 'Runs DatabaseInitService'
-    classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'org.example.DatabaseInitService'
-}
-
-task runPopulate(type: JavaExec) {
-    group = 'Execution'
-    description = 'Runs DatabasePopulateService'
-    classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'org.example.DatabasePopulateService'
-}
-
 task runQuery(type: JavaExec) {
     group = 'Execution'
     description = 'Runs DatabaseQueryService'
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.example.DatabaseQueryService'
+}
+
+task runClientService(type: JavaExec) {
+    group = 'Execution'
+    description = 'Runs ClientService tests'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.example.ClientService'
 }

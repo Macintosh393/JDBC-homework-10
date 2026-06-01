@@ -15,6 +15,12 @@ public class Database {
             String user = "sa";
             String password = "";
             this.connection = DriverManager.getConnection(url, user, password);
+
+            // Run Flyway migrations
+            org.flywaydb.core.Flyway flyway = org.flywaydb.core.Flyway.configure()
+                .dataSource(url, user, password)
+                .load();
+            flyway.migrate();
         } catch (SQLException e) {
             throw new RuntimeException("Failed to connect to H2 database", e);
         }
