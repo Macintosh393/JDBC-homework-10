@@ -43,3 +43,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### H2 Database ###
+testdb.mv.db
+testdb.trace.db
